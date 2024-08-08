@@ -18,8 +18,9 @@ return new class extends Migration
             $table->longText("description")->nullable();
             $table->date("date");
             $table->boolean("is_visible")->default(false);
-            $table->foreignId("user_id")->constrainted('users');
-            $table->foreignId("category_id")->nullable()->constrained("categories");
+            $table->foreignId("user_id")->nullable()->index()->constrained()->nullOnDelete();
+            $table->foreignId("category_id")->nullable()->on("categories")->nullOnDelete();
+            $table->string('video')->require();
             // $table->enum("type", ['showable', 'downloadable'])->default('showable');
             $table->timestamps();
         });

@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string("image")->nullable();
             // $table->date("published_at");
             // $table->date("created_at");
-            $table->foreignId("book_id")->nullable();
-            $table->foreignId("user_id");
+            $table->foreignId("book_id")->nullable()->on('books')->nullOnDelete();
+            $table->foreignId("user_id")->nullable()->on('users')->nullOnDelete();
             $table->timestamps();
         });
     }

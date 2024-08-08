@@ -18,11 +18,16 @@ return new class extends Migration
             $table->longText("description")->nullable();
             $table->string("author")->nullable();
             $table->date("date");
-            $table->foreignId("books_category_id")->constrained("books_categories")->nullable();
-            $table->foreignId("user_id")->nullable()->index();
+            $table->foreignId("books_category_id")
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
+            $table->foreignId("user_id")->nullable()->index()->constrained()->OnDelete('cascade');
             $table->boolean("is_visible")->default(false);
             $table->string("photo")->nullable();
+            $table->string("pdf")->nullable();
             $table->timestamps();
+
         });
     }
 

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string("slug")->unique();
             $table->string("date");
             $table->foreignId("user_id")->constrained('users')
-            ->cascadeOnDelete();
+            ->onDelete('cascade');
             $table->foreignId("video_id")->constrained('videos')->cascadeOnDelete();
             $table->boolean("is_deleted")->default(false);
             $table->timestamps();

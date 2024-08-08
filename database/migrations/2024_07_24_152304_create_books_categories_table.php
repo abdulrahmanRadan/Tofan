@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string("slug")->unique();
             $table->longText("description")->nullable();
             $table->string("photo")->nullable();
-            $table->foreignId("user_id")->constrained("users");
+            $table->foreignId("user_id")->constrained()->onDelete('cascade');
             $table->boolean("is_visible")->default(true);
             $table->timestamps();
         });
